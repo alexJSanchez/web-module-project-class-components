@@ -4,7 +4,9 @@ export default class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      
+      newtodo: "",
+      completed: false,
+      todolist: ["walk the dog","groceries"],
     }
   }
   render() {
