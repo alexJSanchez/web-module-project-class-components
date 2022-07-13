@@ -4,9 +4,7 @@ import TodoList from './TodoList';
 export default class App extends React.Component {
   constructor(){
     super();
-    this.state = {
-      newtodo: "",
-      
+    this.state = {      
       todolist: [
         {
           name: 'Organize Garage',
@@ -26,9 +24,7 @@ export default class App extends React.Component {
     return (
       <div>
       <h1>Todos:</h1>
-      <ol>
-        {todolist.map(todo => <li>{todo.name} {todo.completed?<span>completed</span>:<span></span>}</li> )}
-      </ol>
+     <TodoList todo={todolist}/>  
         <form>
           <input/>
           <button>Add</button>
