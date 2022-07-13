@@ -16,23 +16,38 @@ export default class App extends React.Component {
         {
           name: "Bake Cookies",
           id: 1528817084358,
-          completed: true,
+          completed: false,
         },
       ],
     };
   }
-
-  handleClear = (e) => { 
-    e.preventDefault
-   this.setState({...this.state, todolist: this.state.todolist.filter(todo => {return (todo.completed===false)})}) 
-  }
+  handleAdd = (newTodo) => {
+    const addTodo = {
+      name: newTodo,
+      id: Date.now(),
+      completed: false
+    }
+    this.setState({
+      ...this.state,
+      todolist: [...this.state.todolist, addTodo],
+    });
+  };
+  handleClear = (e) => {
+    e.preventDefault;
+    this.setState({
+      ...this.state,
+      todolist: this.state.todolist.filter((todo) => {
+        return todo.completed === false;
+      }),
+    });
+  };
   render() {
     const { todolist } = this.state;
     return (
       <>
         <h1>Todos:</h1>
         <TodoList todo={todolist} />
-        <Form />
+        <Form handleAdd={this.handleAdd} />
         <button onClick={this.handleClear}>Clear</button>
       </>
     );
