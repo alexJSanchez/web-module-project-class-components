@@ -6,13 +6,35 @@ export default class App extends React.Component {
     super();
     this.state = {
       newtodo: "",
-      completed: false,
-      todolist: ["walk the dog","groceries"],
+      
+      todolist: [
+        {
+          name: 'Organize Garage',
+          id: 1528817077286, // could look different, you could use a timestamp to generate it
+          completed: false
+        },
+        {
+          name: 'Bake Cookies',
+          id: 1528817084358,
+          completed: false
+        }
+      ],
     }
   }
   render() {
+    const {todolist} = this.state;
     return (
-      <TodoList todos={this.state.todolist}/>
+      <div>
+      <h1>Todos:</h1>
+      <ol>
+        {todolist.map(todo => <li>{todo.name} {todo.completed?<span>completed</span>:<span></span>}</li> )}
+      </ol>
+        <form>
+          <input/>
+          <button>Add</button>
+          <button>Clear</button>
+        </form>
+      </div>
     )
   }
 }
